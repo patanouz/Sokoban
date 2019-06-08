@@ -19,6 +19,7 @@ public class board {
 			
 			for(int j = 0; j < y; j++) {
 				map.add("x");
+				System.out.println();
 			}
 			
 		}

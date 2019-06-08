@@ -29,7 +29,7 @@ public class graphics extends JPanel {
 
 	public graphics() {
 	       try {                
-	          image = ImageIO.read(new File("/sokoban/images/test.png"));
+	          image = ImageIO.read(new File("../../images/test.png"));
 	       } catch (IOException ex) {
 	            // handle exception...
 	       }
@@ -42,19 +42,18 @@ public class graphics extends JPanel {
 		JFrame frame = new JFrame();
 		
 		
-		ImageIcon icon = new ImageIcon("/sokoban/images/test.png");
-		JLabel label = new JLabel(icon);
 		
 		
-
-		frame.add(label);
+		
+		
+		
+		
 		frame.add(createPanel());
 		frame.setPreferredSize(new Dimension(300,300));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.pack();
 		frame.setVisible(true);
 		
-		validate();
 		
 		
 		
@@ -63,9 +62,15 @@ public class graphics extends JPanel {
 	
 	private JPanel createPanel() {
         JPanel panel = new JPanel(new GridLayout(5,5));
-        JLabel one = new JLabel();
-        
+        ImageIcon icon = new ImageIcon("images/test.png");
+        JLabel one = new JLabel(icon);
+        JLabel two = new JLabel(icon);
        
+        panel.add(one);
+        validate();
+        repaint();
+        panel.add(one);
+        
         return panel;
     }
 

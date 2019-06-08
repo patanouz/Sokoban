@@ -9,5 +9,6 @@ public class Main {
 		graphics g = new graphics();
 		
 		g.paint();
+		//b.createBoard(5, 5);
 	}
 }
