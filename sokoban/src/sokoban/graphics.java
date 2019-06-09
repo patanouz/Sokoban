@@ -1,59 +1,107 @@
 package sokoban;
 
-import java.awt.BorderLayout;
-import java.awt.Canvas;
 import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Graphics;
-import java.awt.GridLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import chessboard.Main;
 
-public class graphics extends JPanel {
 
-	static JTextField textfield1;
-	private BufferedImage image;
+public class graphics extends JFrame {
+
+	
+	private BufferedImage red;
+	private BufferedImage blank;
+	private BufferedImage floor;
+	private BufferedImage goal;
+	
+	private ArrayList<String> map = new ArrayList<String>();
 
 	public graphics() {
+		
+		map.add("WWWWWWWWW");
+		map.add("WFFFGFFFW");
+		map.add("WFFFGFFFW");
+		map.add("WFWWGWWFW");
+		map.add("WFFFGFFFW");
+		map.add("WWWWWWWWW");
+		
+		
+		
+		
 		try {
-			image = ImageIO.read(new File("/images/red.png"));
+		red = ImageIO.read(new File("images/blue.png"));
+		blank = ImageIO.read(new File("images/blank.png"));
+		floor = ImageIO.read(new File("images/floor.png"));
+		goal = ImageIO.read(new File("images/goal.png"));
 		} catch (IOException ex) {
 			// handle exception...
+			System.out.println("fail" + ex);
 		}
-
-		JFrame frame = new JFrame();
-		frame.setSize(1920, 1080);
-		frame.getContentPane().add(new Main());
-		frame.setLocationRelativeTo(null);
-		frame.setBackground(Color.LIGHT_GRAY);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setVisible(true);
+  
+		setSize(1280, 720);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
 	}
 
 	public void paint(Graphics g) {
-
-		for (int i = 20; i < 975; i += 75) {
-			for (int j = 50; j < 1800; j += 100) {
-				g.drawImage(image, j, i, this);
-
+		super.paint(g);
+		
+		int x = 20;
+		int y = 50;
+		for(String test : map) {
+			for(int j = 0; j < test.length(); j++) {
+				char c = test.charAt(j);
+				
+				
+				if(c == 'W') {
+					
+					g.drawImage(red, x, y, this);
+					x+= 100;
+				} else if (c == 'F') {
+					g.drawImage(floor, x, y, this);
+					x+= 100;
+				} else if (c == 'G') {
+					g.drawImage(goal, x, y, this);
+					x+= 100;
+				} else {
+					g.drawImage(blank, x, y, this);
+					x+= 100;
+				}
+				
+				
+				
+	/*		switch(c) {
+			case 'W' :
+				
+			case 'F' :
+				g.drawImage(floor, x, y, this);
+				x+= 100;
+			case 'G' :
+				g.drawImage(goal, x, y, this);
+				x+= 100;
+			case 'B' :
+				g.drawImage(blank, x, y, this);
+				x+= 100;
+				
+				}
+		*/	
+			
+				
 			}
-
+			y += 75;
+			x = 20;
 		}
+		
+		
 	}
 
 }
