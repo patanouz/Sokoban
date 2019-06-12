@@ -26,7 +26,10 @@ public class player extends Figure {
 			e.printStackTrace();
 		}
 	}
-
+	
+	
+	
+	//move one step
 	public void move(int dx, int dy) {
 
 		this.x += dx;
