@@ -27,5 +27,21 @@ public abstract class Figure {
         this.y+= dy;
     }
     
+    public void increaseX() {
+		x ++;
+	}
+	
+	public void increaseY() {
+		y ++;
+	}
+	
+	public void DecreaseX() {
+		x --;
+	}
+	
+	public void DecreaseY() {
+		y --;
+	}
+    
     public abstract void draw(Graphics graphics);
 }

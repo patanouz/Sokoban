@@ -12,15 +12,23 @@ public class player extends Figure {
 
 	private int x;
 	private int y;
+	
+	private int posX;
+	private int posY;
+	
 	private BufferedImage player;
 
-	public player(int x, int y) {
-		super(x, y);
+	public player(int x, int y, int posX, int posY) {
+		super(posX, posY);
 		this.x = x;
 		this.y = y;
 		
+		this.posX = posX;
+		this.posY = posY;
+		
+		
 		try {
-			player = ImageIO.read(new File("images/box_on_floor.png"));
+			player = ImageIO.read(new File("images/player.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,6 +43,7 @@ public class player extends Figure {
 		this.x += dx;
 		this.y += dy;
 	}
+	
 
 	@Override
 	public void draw(Graphics graphics) {
