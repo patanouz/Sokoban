@@ -1,15 +1,14 @@
 package sokoban;
 
-import java.awt.Graphics;
-
 public class Main {
 	public static void main(String[] args) {
 		
 		
-		board board = new board(11, 8);
+		sokoban.board board = new board();
 		
-		//board b = new board();
-		graphics g = new graphics(board.getPlayer(), board);
+		//test
+
+		sokoban.graphics g = new sokoban.graphics(board.getPlayer(), board);
 		
 		
 	}
