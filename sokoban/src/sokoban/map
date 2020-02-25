@@ -1,0 +1,214 @@
+---
+
+level 1 
+red
+WWWWW
+WFFGW
+WWWWW
+
+playerPos
+
+1 1
+
+boxPositions
+
+2 1
+
+---
+
+level 2 
+yellow
+BBBBWWWWWBBBBBBBBBB
+BBBBWFFFWBBBBBBBBBB
+BBWWWFFFWBBBBBBBBBB
+BBWFFFFFWWBBBBBBBBB
+BBWFWFFFFWBBBBBBBBB
+WWWFWFWWFWBBBWWWWWW
+WFFFFFWWFWWWWWFFGGW
+WFFFFFFFFFFFFFFFGGW
+WWWWWFWWWFWFWWFFGGW
+BBBBWFFFFFWWWWWWWWW
+BBBBWWWWWWWBBBBBBBB
+
+playerPos 
+
+11 8
+
+boxPositions
+
+5 2
+5 4
+7 3
+7 4
+5 7
+2 7
+
+---
+
+level 3 
+blue
+WWWWWWWWW
+WFFFGFFFW
+WFFFGFFFW
+WFWWGWWFW
+WFFFGFFFW
+WWWWWWWWW
+
+playerPos 
+
+5 4
+
+boxPositions
+
+2 2
+4 2
+6 2
+6 4
+
+---
+
+level 4 
+purple
+WWWWW
+WFFGW
+WFFFW
+WWWWW
+
+playerPos
+
+1 1
+
+boxPositions
+
+2 1
+
+---
+
+level 5 
+green
+WWWWW
+WFFGWWWW
+WFFFFFFW
+WWWWWWW
+
+playerPos
+
+1 1
+
+boxPositions
+
+2 1
+
+---
+
+level 6 
+yellow
+WWWWW
+WFFGW
+WWWWW
+
+playerPos
+
+1 1
+
+boxPositions
+
+2 1
+
+---
+
+level 7 
+blue
+WWWWW
+WFFGW
+WWWWW
+
+playerPos
+
+1 1
+
+boxPositions
+
+2 1
+
+---
+
+level 8 
+purple
+WWWWW
+WFFGW
+WWWWW
+
+playerPos
+
+1 1
+
+boxPositions
+
+2 1
+
+---
+
+level 9 
+green
+WWWWW
+WFFGW
+WWWWW
+
+playerPos
+
+1 1
+
+boxPositions
+
+2 1
+
+---
+
+level 10 
+blue
+WWWWW
+WFFGW
+WWWWW
+
+playerPos
+
+1 1
+
+boxPositions
+
+2 1
+
+---
+
+level 11 
+red
+WWWWW
+WFFGW
+WWWWW
+
+playerPos
+
+1 1
+
+boxPositions
+
+2 1
+
+---
+
+level 12 
+red
+WWWWW
+WFFGW
+WWWWW
+
+playerPos
+
+1 1
+
+boxPositions
+
+2 1
+
+---

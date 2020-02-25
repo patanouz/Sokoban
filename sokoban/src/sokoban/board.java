@@ -1,6 +1,7 @@
 package sokoban;
 
 import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -21,7 +22,7 @@ public class board {
 	private ArrayList<String> map = new ArrayList<String>();
 	private ArrayList<box> boxes = new ArrayList<box>();
 
-	private HashMap<String, BufferedImage> colors = new HashMap<String, BufferedImage>();
+	private HashMap<String, Image> colors = new HashMap<String, Image>();
 
 	// Sets the board, boxes and players.
 	// TODO: separate map loading into other class
@@ -36,16 +37,16 @@ public class board {
 
 		try {
 
-			BufferedImage wall_red = ImageIO.read(new File("images/red.png"));
-			BufferedImage wall_green = ImageIO.read(new File("images/green.png"));
-			BufferedImage wall_yellow = ImageIO.read(new File("images/yellow.png"));
-			BufferedImage wall_purple = ImageIO.read(new File("images/purple.png"));
-			BufferedImage wall_blue = ImageIO.read(new File("images/blue.png"));
-			BufferedImage blank = ImageIO.read(new File("images/blank.png"));
-			BufferedImage floor = ImageIO.read(new File("images/floor.png"));
-			BufferedImage goal = ImageIO.read(new File("images/goal.png"));
-			BufferedImage box_floor = ImageIO.read(new File("images/box_on_floor.png"));
-			BufferedImage box_goal = ImageIO.read(new File("images/box_on_goal.png"));
+			Image wall_red = ImageIO.read(new File("sokoban/images/red.png"));
+			Image wall_green = ImageIO.read(new File("sokoban/images/green.png"));
+			Image wall_yellow = ImageIO.read(new File("sokoban/images/yellow.png"));
+			Image wall_purple = ImageIO.read(new File("sokoban/images/purple.png"));
+			Image wall_blue = ImageIO.read(new File("sokoban/images/blue.png"));
+			Image blank = ImageIO.read(new File("sokoban/images/blank.png"));
+			Image floor = ImageIO.read(new File("sokoban/images/floor.png"));
+			Image goal = ImageIO.read(new File("sokoban/images/goal.png"));
+			Image box_floor = ImageIO.read(new File("sokoban/images/box_on_floor.png"));
+			Image box_goal = ImageIO.read(new File("sokoban/images/box_on_goal.png"));
 
 			colors.put("red", wall_red);
 			colors.put("green", wall_green);
@@ -63,7 +64,21 @@ public class board {
 			System.out.println("fail : " + ex);
 		}
 
+		for(HashMap.Entry<String, Image> entry : colors.entrySet()) {
+
+			Image resize = entry.getValue();
+
+			Image modified = resize.getScaledInstance(80, 60, Image.SCALE_AREA_AVERAGING);
+			entry.setValue(modified);
+
+
+		}
+
+
 	}
+
+
+
 
 	public void getboard(DrawingBoard b) {
 		this.draw = b;
@@ -95,11 +110,11 @@ public class board {
 				return false;
 			}
 			if (x == 1) {
-				b.move(100, 0);
+				b.move(80, 0);
 				b.increaseX();
 				player.increaseX();
 			} else {
-				b.move(-100, 0);
+				b.move(-80, 0);
 				b.DecreaseX();
 				player.DecreaseX();
 			}
@@ -120,7 +135,7 @@ public class board {
 				return false;
 			} else {
 
-				b.move(0, -75);
+				b.move(0, -60);
 				b.DecreaseY();
 				player.DecreaseY();
 				// draw.repaint();
@@ -139,7 +154,7 @@ public class board {
 				return false;
 			} else {
 
-				b.move(0, 75);
+				b.move(0, 60);
 				b.increaseY();
 				player.increaseY();
 
@@ -277,7 +292,13 @@ public class board {
 
 	}
 
+	public static void infoBox(String infoMessage, String titleBar)
+	{
+		JOptionPane.showMessageDialog(null, infoMessage, "InfoBox: " + titleBar, JOptionPane.INFORMATION_MESSAGE);
+	}
+
 	public void levelBump() {
+		infoBox("You won!", "Loading next level");
 		currentlevel++;
 		map.clear();
 		boxes.clear();
@@ -293,33 +314,33 @@ public class board {
 
 	public void paint(Graphics g) {
 
-		int x = 20;
-		int y = 50;
+		int x = 0;
+		int y = 0;
 		for (String map : map) {
 			for (int j = 0; j < map.length(); j++) {
 				char c = map.charAt(j);
 
 				if (c == 'W') {
 					g.drawImage(colors.get(reader.getColor()), x, y, null);
-					x += 100;
+					x += 80;
 				} else if (c == 'F') {
 					g.drawImage(colors.get("floor"), x, y, null);
-					x += 100;
+					x += 80;
 				} else if (c == 'G') {
 					g.drawImage(colors.get("goal"), x, y, null);
-					x += 100;
+					x += 80;
 				} else if (c == 'B') {
 					g.drawImage(colors.get("blank"), x, y, null);
-					x += 100;
+					x += 80;
 				}
 
 			}
-			y += 75;
-			x = 20;
+			y += 60;
+			x = 0;
 		}
 
-		x = 20;
-		y = 50;
+		x = 0;
+		y = 0;
 
 	}
 }

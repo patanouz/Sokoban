@@ -14,7 +14,7 @@ public class Player extends Figure {
 	private int posX;
 	private int posY;
 	
-	private BufferedImage player;
+	private Image player;
 
 	public Player(int x, int y, int posX, int posY) {
 		super(posX, posY);
@@ -26,7 +26,10 @@ public class Player extends Figure {
 		
 		
 		try {
-			player = ImageIO.read(new File("images/player.png"));
+			player = ImageIO.read(new File("sokoban/images/player.png"));
+			Image modified = player.getScaledInstance(80, 60, Image.SCALE_AREA_AVERAGING);
+			player = modified;
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

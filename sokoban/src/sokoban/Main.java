@@ -6,11 +6,14 @@ public class Main {
 		
 		sokoban.board board = new board();
 		
-		//test
+		
 
 		sokoban.graphics g = new sokoban.graphics(board.getPlayer(), board);
 		
-		
+
+
+
+
 	}
 }
 

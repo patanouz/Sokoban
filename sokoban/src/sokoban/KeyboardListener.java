@@ -26,25 +26,25 @@ public class KeyboardListener implements KeyListener {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_LEFT:
 			if (board.allowed(-1, 0, figure.getX(), figure.getY())) {
-				figure.move(-50, 0);
-				figure.move(-50, 0);
+				figure.move(-80, 0);
+
 			}
 			break;
 		case KeyEvent.VK_RIGHT:
 			if (board.allowed(1, 0, figure.getX(), figure.getY())) {
-				figure.move(100, 0);
+				figure.move(80, 0);
 				
 			}
 			break;
 		case KeyEvent.VK_UP:
 			if (board.allowed(0, -1, figure.getX(), figure.getY())) {
-				figure.move(0, -75);
+				figure.move(0, -60);
 				
 			}
 			break;
 		case KeyEvent.VK_DOWN:
 			if (board.allowed(0, 1, figure.getX(), figure.getY())) {
-				figure.move(0, 75);
+				figure.move(0, 60);
 			}
 			break;
 		case KeyEvent.VK_R:
@@ -60,7 +60,6 @@ public class KeyboardListener implements KeyListener {
 		board.inGoal();
 		component.repaint();
 		if (board.winner()) {
-			System.out.println("You won!");
 			board.levelBump();
 			figure = board.getPlayer();
 			component.revalidate();
