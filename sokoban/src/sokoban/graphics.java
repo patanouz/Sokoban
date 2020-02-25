@@ -1,26 +1,14 @@
 package sokoban;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
 
 public class graphics extends JFrame {
 
 	
 	
-	private player Player;
+	private Player Player;
 	private JFrame frame;
 	private Figure figure;
 	private board board;
@@ -29,7 +17,7 @@ public class graphics extends JFrame {
 	private ArrayList<box> boxes = new ArrayList<box>();
 
 	
-	public graphics(player player, board board) {
+	public graphics(Player player, board board) {
 		
 		this.Player = player;
 		this.board = board;
@@ -38,14 +26,9 @@ public class graphics extends JFrame {
 		
 		
 		
-		
-		
-
-		
-		
 		frame = new JFrame();
 		frame.setPreferredSize(new Dimension(1920, 1080));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		createComponents(frame.getContentPane());
 		addListeners();
 		frame.pack();
@@ -70,8 +53,5 @@ public class graphics extends JFrame {
         return frame;
     }
 	
-	
-
-	
-
+    
 }

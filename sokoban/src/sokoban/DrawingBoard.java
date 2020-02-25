@@ -1,32 +1,37 @@
 package sokoban;
 
-import java.awt.Color;
-import java.awt.Graphics;
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
-
-import javax.swing.JPanel;
 
 
 public class DrawingBoard extends JPanel {
 
-    private Figure figure;
+	private Figure figure;
     private board board;
     private ArrayList<box> boxes = new ArrayList<box>();
 
     public DrawingBoard(Figure figure, board board, ArrayList<box> boxes) {
        super.setBackground(Color.WHITE);
-       this.figure = figure;
        this.board = board;
        this.boxes = boxes;
+       this.figure = figure;
        
        board.getboard(this);
        board.inGoal();
        
     }
     
+    public void delete() {
+    	figure = null;
+    }
     
+    public void newFigure(Figure figure) {
+    	this.figure = figure;
+    }
 
-    @Override
+
+	@Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
         board.paint(graphics);

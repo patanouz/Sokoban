@@ -1,6 +1,6 @@
 package sokoban;
 
-import java.awt.Graphics;
+import java.awt.*;
 
 public abstract class Figure {
     
@@ -9,9 +9,12 @@ public abstract class Figure {
     
     
     public Figure(int x, int y) {
+    	
         this.x = x;
         this.y = y;
     }
+    
+    
     
     public int getX() {
         return x;
@@ -27,7 +30,13 @@ public abstract class Figure {
         this.y+= dy;
     }
     
+    public void reset(int x, int y) {
+    	this.x = x;
+    	this.y = y;
+    }
+    
     public void increaseX() {
+    	
 		x ++;
 	}
 	
@@ -40,6 +49,7 @@ public abstract class Figure {
 	}
 	
 	public void DecreaseY() {
+
 		y --;
 	}
     

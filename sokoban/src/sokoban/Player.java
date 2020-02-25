@@ -1,14 +1,12 @@
 package sokoban;
 
-import java.awt.Graphics;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
-public class player extends Figure {
+public class Player extends Figure {
 
 	private int x;
 	private int y;
@@ -16,9 +14,9 @@ public class player extends Figure {
 	private int posX;
 	private int posY;
 	
-	private BufferedImage player;
+	private Image player;
 
-	public player(int x, int y, int posX, int posY) {
+	public Player(int x, int y, int posX, int posY) {
 		super(posX, posY);
 		this.x = x;
 		this.y = y;
@@ -28,14 +26,24 @@ public class player extends Figure {
 		
 		
 		try {
-			player = ImageIO.read(new File("images/player.png"));
+			player = ImageIO.read(new File("sokoban/images/player.png"));
+			Image modified = player.getScaledInstance(80, 60, Image.SCALE_AREA_AVERAGING);
+			player = modified;
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
+	public void reset(int x, int y) {
+		super.reset(x, y);
+	}
 	
+	public void where() {
+    	System.out.println("2x : " + super.getX());
+    	System.out.println("2y : " + super.getY());
+    }
 	
 	//move one step
 	public void move(int dx, int dy) {

@@ -1,12 +1,10 @@
 package sokoban;
 
-import java.awt.Graphics;
+import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
 import java.io.File;
 import java.io.IOException;
-
-import javax.imageio.ImageIO;
 
 public class box extends Figure {
 
@@ -16,8 +14,8 @@ public class box extends Figure {
 	private int posX;
 	private int posY;
 	
-	private BufferedImage box1;
-	private BufferedImage box2;
+	private Image box1;
+	private Image box2;
 	
 	private boolean inGoal;
 
@@ -27,13 +25,19 @@ public class box extends Figure {
 		this.y = y;
 		
 		
-		this.posX = (20 + x * 100);
-		this.posY = (50 + y * 75);
+		this.posX = (x * 80);
+		this.posY = (y * 60);
 		
 		
 		try {
-			box1 = ImageIO.read(new File("images/box_on_floor.png"));
-			box2 = ImageIO.read(new File("images/box_on_goal.png"));
+			box1 = ImageIO.read(new File("sokoban/images/box_on_floor.png"));
+			box2 = ImageIO.read(new File("sokoban/images/box_on_goal.png"));
+
+			Image modified = box1.getScaledInstance(80, 60, Image.SCALE_AREA_AVERAGING);
+			box1 = modified;
+			Image modified2 = box2.getScaledInstance(80, 60, Image.SCALE_AREA_AVERAGING);
+			box2 = modified2;
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
