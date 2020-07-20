@@ -17,7 +17,7 @@ public class mapReader {
 		
 		this.draw = draw;
 		
-		File file = new File("sokoban/src/sokoban/map");
+		File file = new File("src/sokoban/map");
 
 		try {
 			br = new BufferedReader(new FileReader(file));
@@ -49,8 +49,8 @@ public class mapReader {
 					int px = Integer.parseInt(XandY[0]);
 					int py = Integer.parseInt(XandY[1]);
 
-					int playerX = (px * 80);
-					int playerY = (py * 60);
+					int playerX = (px * 60);
+					int playerY = (py * 45);
 
 					player = new Player(playerX, playerY, px, py);
 					try {

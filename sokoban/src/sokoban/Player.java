@@ -26,8 +26,8 @@ public class Player extends Figure {
 		
 		
 		try {
-			player = ImageIO.read(new File("sokoban/images/player.png"));
-			Image modified = player.getScaledInstance(80, 60, Image.SCALE_AREA_AVERAGING);
+			player = ImageIO.read(new File("src/images/player.png"));
+			Image modified = player.getScaledInstance(60, 45, Image.SCALE_AREA_AVERAGING);
 			player = modified;
 
 		} catch (IOException e) {

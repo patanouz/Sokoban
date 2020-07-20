@@ -37,16 +37,16 @@ public class board {
 
 		try {
 
-			Image wall_red = ImageIO.read(new File("sokoban/images/red.png"));
-			Image wall_green = ImageIO.read(new File("sokoban/images/green.png"));
-			Image wall_yellow = ImageIO.read(new File("sokoban/images/yellow.png"));
-			Image wall_purple = ImageIO.read(new File("sokoban/images/purple.png"));
-			Image wall_blue = ImageIO.read(new File("sokoban/images/blue.png"));
-			Image blank = ImageIO.read(new File("sokoban/images/blank.png"));
-			Image floor = ImageIO.read(new File("sokoban/images/floor.png"));
-			Image goal = ImageIO.read(new File("sokoban/images/goal.png"));
-			Image box_floor = ImageIO.read(new File("sokoban/images/box_on_floor.png"));
-			Image box_goal = ImageIO.read(new File("sokoban/images/box_on_goal.png"));
+			Image wall_red = ImageIO.read(new File("src/images/red.png"));
+			Image wall_green = ImageIO.read(new File("src/images/green.png"));
+			Image wall_yellow = ImageIO.read(new File("src/images/yellow.png"));
+			Image wall_purple = ImageIO.read(new File("src/images/purple.png"));
+			Image wall_blue = ImageIO.read(new File("src/images/blue.png"));
+			Image blank = ImageIO.read(new File("src/images/blank.png"));
+			Image floor = ImageIO.read(new File("src/images/floor.png"));
+			Image goal = ImageIO.read(new File("src/images/goal.png"));
+			Image box_floor = ImageIO.read(new File("src/images/box_on_floor.png"));
+			Image box_goal = ImageIO.read(new File("src/images/box_on_goal.png"));
 
 			colors.put("red", wall_red);
 			colors.put("green", wall_green);
@@ -68,13 +68,10 @@ public class board {
 
 			Image resize = entry.getValue();
 
-			Image modified = resize.getScaledInstance(80, 60, Image.SCALE_AREA_AVERAGING);
+			Image modified = resize.getScaledInstance(60, 45, Image.SCALE_AREA_AVERAGING);
 			entry.setValue(modified);
 
-
 		}
-
-
 	}
 
 
@@ -110,11 +107,11 @@ public class board {
 				return false;
 			}
 			if (x == 1) {
-				b.move(80, 0);
+				b.move(60, 0);
 				b.increaseX();
 				player.increaseX();
 			} else {
-				b.move(-80, 0);
+				b.move(-60, 0);
 				b.DecreaseX();
 				player.DecreaseX();
 			}
@@ -135,7 +132,7 @@ public class board {
 				return false;
 			} else {
 
-				b.move(0, -60);
+				b.move(0, -45);
 				b.DecreaseY();
 				player.DecreaseY();
 				// draw.repaint();
@@ -154,7 +151,7 @@ public class board {
 				return false;
 			} else {
 
-				b.move(0, 60);
+				b.move(0, 45);
 				b.increaseY();
 				player.increaseY();
 
@@ -322,20 +319,20 @@ public class board {
 
 				if (c == 'W') {
 					g.drawImage(colors.get(reader.getColor()), x, y, null);
-					x += 80;
+					x += 60;
 				} else if (c == 'F') {
 					g.drawImage(colors.get("floor"), x, y, null);
-					x += 80;
+					x += 60;
 				} else if (c == 'G') {
 					g.drawImage(colors.get("goal"), x, y, null);
-					x += 80;
+					x += 60;
 				} else if (c == 'B') {
 					g.drawImage(colors.get("blank"), x, y, null);
-					x += 80;
+					x += 60;
 				}
 
 			}
-			y += 60;
+			y += 45;
 			x = 0;
 		}
 

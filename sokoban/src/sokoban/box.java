@@ -25,17 +25,17 @@ public class box extends Figure {
 		this.y = y;
 		
 		
-		this.posX = (x * 80);
-		this.posY = (y * 60);
+		this.posX = (x * 60);
+		this.posY = (y * 45);
 		
 		
 		try {
-			box1 = ImageIO.read(new File("sokoban/images/box_on_floor.png"));
-			box2 = ImageIO.read(new File("sokoban/images/box_on_goal.png"));
+			box1 = ImageIO.read(new File("src/images/box_on_floor.png"));
+			box2 = ImageIO.read(new File("src/images/box_on_goal.png"));
 
-			Image modified = box1.getScaledInstance(80, 60, Image.SCALE_AREA_AVERAGING);
+			Image modified = box1.getScaledInstance(60, 45, Image.SCALE_AREA_AVERAGING);
 			box1 = modified;
-			Image modified2 = box2.getScaledInstance(80, 60, Image.SCALE_AREA_AVERAGING);
+			Image modified2 = box2.getScaledInstance(60, 45, Image.SCALE_AREA_AVERAGING);
 			box2 = modified2;
 
 		} catch (IOException e) {
