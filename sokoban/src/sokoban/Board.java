@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class board {
+public class Board {
 
 	private mapReader reader;
 
@@ -22,19 +22,16 @@ public class board {
 	private ArrayList<String> map = new ArrayList<String>();
 	private ArrayList<box> boxes = new ArrayList<box>();
 
-	private HashMap<String, Image> colors = new HashMap<String, Image>();
+	public HashMap<String, Image> colors = new HashMap<String, Image>();
+	
+	
+	private int boardWidth;
+	private int boardHeight;
 
-	// Sets the board, boxes and players.
-	// TODO: separate map loading into other class
-	public board() {
 
-		this.currentlevel = 1;
-		reader = new mapReader(currentlevel, draw);
 
-		player = reader.getPlayer();
-		map = reader.getMap();
-		boxes = reader.getBoxes();
-
+	public Board() {
+		
 		try {
 
 			Image wall_red = ImageIO.read(new File("src/images/red.png"));
@@ -47,6 +44,7 @@ public class board {
 			Image goal = ImageIO.read(new File("src/images/goal.png"));
 			Image box_floor = ImageIO.read(new File("src/images/box_on_floor.png"));
 			Image box_goal = ImageIO.read(new File("src/images/box_on_goal.png"));
+			Image editor_blank = ImageIO.read(new File("src/images/editor_blank.png"));
 
 			colors.put("red", wall_red);
 			colors.put("green", wall_green);
@@ -58,6 +56,7 @@ public class board {
 			colors.put("goal", goal);
 			colors.put("box_floor", box_floor);
 			colors.put("box_goal", box_goal);
+			colors.put("editor", editor_blank);
 
 		} catch (IOException ex) {
 			// handle exception...
@@ -72,13 +71,30 @@ public class board {
 			entry.setValue(modified);
 
 		}
+		
+		setup(1);
 	}
+	
+	public void setup(int level) {
+		
 
+		this.currentlevel = level;
+		reader = new mapReader(currentlevel, draw);
+
+		player = reader.getPlayer();
+		map = reader.getMap();
+		boxes = reader.getBoxes();
+		boardWidth = reader.getMapWidth();
+		boardHeight = reader.getMapHeight();
+		
+	}
 
 
 
 	public void getboard(DrawingBoard b) {
 		this.draw = b;
+		draw.setFocus();
+		
 	}
 
 	public boolean winner() {
@@ -273,20 +289,34 @@ public class board {
 	public Player getPlayer() {
 		return player;
 	}
+	
 
 	public void reset() {
-
+		
+		
 		map.clear();
 		boxes.clear();
 		player = null;
 		reader.removePlayer();
 		draw.delete();
-
+		
 		reader = new mapReader(currentlevel, draw);
 		player = reader.getPlayer();
 		map = reader.getMap();
 		boxes = reader.getBoxes();
+		
+		boardWidth = reader.getMapWidth();
+		boardHeight = reader.getMapHeight();
 
+		draw.getgraphics().fixMyShit(boardHeight, boardWidth);
+		
+	}
+	
+	public void setToZero() {
+		boardWidth = 0;
+		boardHeight = 0;
+		map.clear();
+		boxes.clear();
 	}
 
 	public static void infoBox(String infoMessage, String titleBar)
@@ -302,12 +332,27 @@ public class board {
 		player = null;
 		reader.removePlayer();
 		draw.delete();
-
+		
 		reader = new mapReader(currentlevel, draw);
 		player = reader.getPlayer();
 		map = reader.getMap();
 		boxes = reader.getBoxes();
+		
+		//sets a new required size for the map to center it properly.
+		boardWidth = reader.getMapWidth();
+		boardHeight = reader.getMapHeight();
+		draw.getgraphics().fixMyShit(boardHeight, boardWidth);
+		
 	}
+	
+	public int getWidth() {
+		return boardWidth;
+	}
+	
+	public int getHeight() {
+		return boardHeight;
+	}
+	
 
 	public void paint(Graphics g) {
 

@@ -3,16 +3,11 @@ package sokoban;
 public class Main {
 	public static void main(String[] args) {
 		
-		System.out.println(System.getProperty("user.dir"));
-		sokoban.board board = new board();
+		System.out.println("Hej");
 		
 		
-
-		sokoban.graphics g = new sokoban.graphics(board.getPlayer(), board);
+		MainMenu menu = new MainMenu();
 		
-
-
-
 
 	}
 }
@@ -27,7 +22,7 @@ Sokoban TODO:
 
 3. a win condition, example "next level" button.
 
-4. graphics updates
+4. graphics updates <- DONE!
 
 5. a main menu
 
@@ -35,7 +30,7 @@ Sokoban TODO:
 
 7. sick dubstep music
 
-8. easter eggs
+8. easter eggs <-- added a cheat code, is that enough?
 
 9. ???
 

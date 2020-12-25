@@ -13,6 +13,11 @@ public class mapReader {
 	
 	private DrawingBoard draw;
 
+	
+	
+	//TODO: i board's levelbump så skapar jag ett nytt mapreader-object för varje bana
+	//borde skriva om det istället. 
+	
 	public mapReader(int level, DrawingBoard draw) {
 		
 		this.draw = draw;
@@ -105,6 +110,14 @@ public class mapReader {
 	
 	public String getColor() {
 		return color;
+	}
+	
+	public int getMapHeight() {
+		return map.size() * 45;
+	}
+	
+	public int getMapWidth() {
+		return map.get(0).length() * 60;
 	}
 
 }

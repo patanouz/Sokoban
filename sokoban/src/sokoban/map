@@ -28,6 +28,45 @@ boxPositions
 ---
 
 level 2 
+blue
+BWWWWBBB
+BWFFWWWB
+BWFFFFWB
+WWFWFFWW
+WFFFFFFW
+WFFGWFFW
+WFGGGFWW
+WWWWWWWB
+
+playerPos
+
+5 3
+
+boxPositions
+
+4 2
+4 3
+4 4
+5 4
+
+---
+
+level 3 
+green
+
+
+playerPos
+
+3 3
+
+boxPositions
+
+
+
+---
+
+
+level 61 
 yellow
 BBBBWWWWWBBBBBBBBBB
 BBBBWFFFWBBBBBBBBBB
@@ -56,7 +95,7 @@ boxPositions
 
 ---
 
-level 3 
+level 62 
 blue
 WWWWWWWWW
 WFFFGFFFW
@@ -78,7 +117,7 @@ boxPositions
 
 ---
 
-level 4 
+level 63 
 red
 WWWWWWWWBBBBBBBBB
 WFFGGGGWBBBBBBBBBBB
@@ -113,7 +152,7 @@ boxPositions
 
 ---
 
-level 5 
+level 64 
 green
 WWWWW
 WFFGWWWW
@@ -130,7 +169,7 @@ boxPositions
 
 ---
 
-level 6 
+level 65 
 yellow
 WWWWW
 WFFGW
@@ -146,88 +185,8 @@ boxPositions
 
 ---
 
-level 7 
+level 66 
 blue
-WWWWW
-WFFGW
-WWWWW
-
-playerPos
-
-1 1
-
-boxPositions
-
-2 1
-
----
-
-level 8 
-purple
-WWWWW
-WFFGW
-WWWWW
-
-playerPos
-
-1 1
-
-boxPositions
-
-2 1
-
----
-
-level 9 
-green
-WWWWW
-WFFGW
-WWWWW
-
-playerPos
-
-1 1
-
-boxPositions
-
-2 1
-
----
-
-level 10 
-blue
-WWWWW
-WFFGW
-WWWWW
-
-playerPos
-
-1 1
-
-boxPositions
-
-2 1
-
----
-
-level 11 
-red
-WWWWW
-WFFGW
-WWWWW
-
-playerPos
-
-1 1
-
-boxPositions
-
-2 1
-
----
-
-level 12 
-red
 WWWWW
 WFFGW
 WWWWW
