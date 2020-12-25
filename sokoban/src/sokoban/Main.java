@@ -2,8 +2,11 @@ package sokoban;
 
 public class Main {
 	public static void main(String[] args) {
-		
-		System.out.println("Hej");
+
+		if(System.getProperty("os.name").equals("Linux")) {
+			System.setProperty("sun.java2d.opengl", "true");
+		}
+
 		
 		
 		MainMenu menu = new MainMenu();
