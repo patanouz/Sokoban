@@ -26,6 +26,7 @@ public class mapReader {
 
 		try {
 			br = new BufferedReader(new FileReader(file));
+
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,7 +36,7 @@ public class mapReader {
 
 		try {
 			while ((line = br.readLine()) != null) {
-				if (line.contains("level " + level + " ")) {
+				if (line.contains("level " + level)) {
 					line = br.readLine();
 					color = line;
 					line = br.readLine();

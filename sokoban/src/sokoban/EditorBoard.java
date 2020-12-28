@@ -3,7 +3,6 @@ package sokoban;
 import java.awt.FlowLayout;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -13,12 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
-import javax.swing.ButtonGroup;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JRadioButton;
+import javax.swing.*;
 
 public class EditorBoard extends JPanel implements MouseListener {
 	
@@ -31,6 +25,8 @@ public class EditorBoard extends JPanel implements MouseListener {
 	
 	private ArrayList<String> map = new ArrayList<String>();
 	public ArrayList<String> printableMap = new ArrayList<String>();
+	private ArrayList<Box> boxList = new ArrayList<Box>();
+	private Player player;
 	
 	private String wallColor = "blue";
 	private char paintBrush = 'F';
@@ -38,6 +34,7 @@ public class EditorBoard extends JPanel implements MouseListener {
 	public EditorBoard(Board board) {
 		
 		this.board = board;
+		this.player = null;
 		
 		
 		
@@ -66,7 +63,8 @@ public class EditorBoard extends JPanel implements MouseListener {
 	@Override
     protected void paintComponent(Graphics graphics) {
         super.paintComponent(graphics);
-        
+
+
         
         int y = 0;
         
@@ -91,12 +89,37 @@ public class EditorBoard extends JPanel implements MouseListener {
     	   }
     	   y++;
        }
+
+		if(player != null) {
+			System.out.println("Attempting to draw player at: " + player.getX() + ", " +  player.getY());
+			graphics.drawImage(player.getPlayerImage(), (player.getX()), (player.getY()), null);
+		}
         
     }
 
+    //TODO: This is fucking horrible, redo it please.
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
+
+		if(paintBrush == 'b') {
+			//TODO: Add box or something
+			System.out.println("Adding boxes is currently not working");
+			return;
+		}
+
+		if(paintBrush == 'P') {
+			//TODO: add player or something
+			int x = e.getX() / 60;
+			int y = e.getY() / 45;
+			player = new Player(x, y);
+
+			revalidate();
+			repaint();
+			return;
+		}
+
+		System.out.println(paintBrush);
+
 		StringBuilder repaint = new StringBuilder(map.get(e.getY() / 45));
 		repaint.setCharAt(e.getX() / 60, paintBrush);
 		map.set(e.getY() / 45, repaint.toString());
@@ -172,22 +195,34 @@ public class EditorBoard extends JPanel implements MouseListener {
 		    paintBrush = 'B';
 		  }
 		});
+
+		JRadioButton r5 = new JRadioButton("Box");
+		r5.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				paintBrush = 'b';
+			}
+		});
+
+		JRadioButton r6 = new JRadioButton("Player");
+		r6.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent e)
+			{
+				paintBrush = 'P';
+			}
+		});
     	
     	JButton save = new JButton("Save");
     	save.addActionListener(new ActionListener()
     	{
-    		
-    		
-    		
-    		
     		public void actionPerformed(ActionEvent e)
     		{
-    			
     			for(String s : map) {
     				printableMap.add(s);
     			}
-    			
-    			
+
     			CleanMap();
     			
     			char[][] wtf = new char[printableMap.size()][20];
@@ -195,24 +230,23 @@ public class EditorBoard extends JPanel implements MouseListener {
     			for(int i = 0; i < printableMap.size(); i++) {
     				wtf[i] = printableMap.get(i).toCharArray();
     			}
-    			
-    			
-    			rotateCW(wtf);
-    			
-  
-    			CleanMap();
-    			
-    			
-    			
-    			for(String s : printableMap) {
-    				System.out.println(s);
-    			}
-    		
-    			
-    			
-    			
-    		
-    		
+
+					rotateCW(wtf);
+					CleanMap();
+
+					char[][] secondWtf = new char[printableMap.size()][printableMap.get(0).length()];
+
+				for(int i = 0; i < printableMap.size(); i++) {
+					secondWtf[i] = printableMap.get(i).toCharArray();
+				}
+
+				rotateCW(secondWtf);
+
+				for(int i = printableMap.size() - 1; i >= 0; i--) {
+					System.out.println(new StringBuilder(printableMap.get(i)).reverse().toString());
+				}
+
+				printableMap.clear();
     		}
     	});
     	
@@ -220,11 +254,15 @@ public class EditorBoard extends JPanel implements MouseListener {
     	radioButtons.add(r2);
     	radioButtons.add(r3);
     	radioButtons.add(r4);
+    	radioButtons.add(r5);
+    	radioButtons.add(r6);
     	
     	bottomMenu.add(r1);
     	bottomMenu.add(r2);
     	bottomMenu.add(r3);
     	bottomMenu.add(r4);
+    	bottomMenu.add(r5);
+    	bottomMenu.add(r6);
     	bottomMenu.add(save);
     	
     	
@@ -265,39 +303,9 @@ public class EditorBoard extends JPanel implements MouseListener {
 	    	printableMap.add(str);
 	    }
 	}
-	
-private void rotateCCW() {
-		
-	
-		ArrayList<String> temp = printableMap;
-		
-		char[][] mat = new char[printableMap.size()][20];
-		
-		for(int i = 0; i < printableMap.size(); i++) {
-			mat[i] = printableMap.get(i).toCharArray();
-		}
-		
 
-		printableMap.clear();
-		
-	    final int M = mat.length;
-	    final int N = mat[0].length;
-	    char[][] ret = new char[N][M];
-	    for (int r = 0; r < M; r++) {
-	        for (int c = 0; c < N; c++) {
-	            ret[c][M-1-r] = mat[r][c];
-	        }
-	    }
-	    
-	    
-	    for(char[] arr : ret) {
-	    	String str = String.valueOf(arr);
-	    	printableMap.add(str);
-	    }
-	}
-	
-	
-	
+
+
 	public void CleanMap() {
 		
 		

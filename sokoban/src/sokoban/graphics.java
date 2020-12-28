@@ -221,8 +221,7 @@ public class graphics extends JFrame {
 		dwidth = editorBoard.getSize().width;
 		init = false;
 		}
-		
-		System.out.println(dheight);
+
 		
 		
 		fixMyShit(720,1140);

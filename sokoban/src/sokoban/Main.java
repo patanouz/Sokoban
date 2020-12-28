@@ -7,7 +7,7 @@ public class Main {
 			System.setProperty("sun.java2d.opengl", "true");
 		}
 
-		
+
 		
 		MainMenu menu = new MainMenu();
 		
@@ -20,6 +20,7 @@ public class Main {
 Sokoban TODO:
 
 1. level editor!
+1.1		Simplify all position X and Y into only having one X or Y, never two.
 
 2. class for saving games as text, also loading maps from files.
 
@@ -27,7 +28,7 @@ Sokoban TODO:
 
 4. graphics updates <- DONE!
 
-5. a main menu
+5. a main menu <- done
 
 6. a background image
 

@@ -27,7 +27,6 @@ public class KeyboardListener implements KeyListener {
 		switch (e.getKeyCode()) {
 		case KeyEvent.VK_LEFT:
 			cheatHax = 0;
-			System.out.println(board.getHeight());
 			if (board.allowed(-1, 0, drawingBoard.player.getX(), drawingBoard.player.getY())) {
 				drawingBoard.player.move(-60, 0);
 

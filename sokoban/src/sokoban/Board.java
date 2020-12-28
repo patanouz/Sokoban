@@ -100,7 +100,7 @@ public class Board {
 	public boolean winner() {
 
 		for (box b : boxes) {
-			if (b.inGoal() == false) {
+			if (!b.inGoal()) {
 				return false;
 			}
 		}
